@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!-- Title -->
+    
+    <title>
+        实用的javascript小技巧 | 前端，python和运维
+    </title>
+    
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+    
+    <!-- Meta & INfo -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="袁帅">
+    <meta name="description" content="null">
+    <meta name="keywords" content="null">
+    
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+    
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="前端，python和运维">
+    
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yshuai.github.io">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="实用的javascript小技巧 | 前端，python和运维">
+    <meta property="og:description" content="null">
+    
+     <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+        
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+    
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+	body, html{
+		font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+	}
+	
+    a{
+        color: #00838F
+    }
+    
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge{
+        background-color: #0097A7 !important
+    }
+    
+	/* Sidebar User Drop Down Menu Text Color */
+	#scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus{
+        color: #0097A7 !important
+    }
+    
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover > a,
+    .sidebar-colored .sidebar-nav li:hover > a i,
+    .sidebar-colored .sidebar-nav li > a:hover,
+    .sidebar-colored .sidebar-nav li > a:hover i,
+    .sidebar-colored .sidebar-nav li > a:focus i,
+    .sidebar-colored .sidebar-nav > .open > a,
+    .sidebar-colored .sidebar-nav > .open > a:hover,
+    .sidebar-colored .sidebar-nav > .open > a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a{
+        color: #0097A7 !important
+    }
+    
+    .toTop{
+        background: #757575 !important
+    }
+		
+	.material-layout .material-post>.material-nav,
+	.material-layout .material-index>.material-nav,
+	.material-nav a{
+		color: #757575;
+	}
+		
+	#scheme-Paradox .MD-burger-layer {
+		background-color: #757575;
+	}
+
+	#scheme-Paradox #post-toc-trigger-btn{
+		color: #757575;
+	}
+	
+	.post-toc a:hover{
+		color: #00838F;
+		text-decoration: underline;
+	}
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+        body{
+            background-color: #F5F5F5
+        }
+		
+		/* blog_info bottom background */
+        #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+            background-color: #fff;
+        }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+        .fade {
+            transition: all 800ms linear;
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            opacity: 1;
+        }
+
+        .fade.out{
+            opacity: 0;
+        }
+    </style>
+
+	<script src="/js/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="/css/highlight/solarized-white.css">
+	
+	<!-- UC Browser Compatible-->
+	<script>
+		var agent = navigator.userAgent.toLowerCase();
+		if(agent.indexOf('ucbrowser')>0) {
+			document.write('<link rel="stylesheet" href="/css/uc.css">');
+		   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+		}
+	</script>
+    
+    <!-- Custom Head -->
+    
+</head>
+	
+	
+
+    <body id="scheme-Paradox">
+
+		
+        <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+				
+			
+			
+            <!-- Main Container -->
+            <main class="material-layout__content" id="main">
+				
+                <!-- Top Anchor -->
+                <div id="top"></div>
+				
+				
+                <!-- Hamburger Button -->
+                <button class="MD-burger-icon sidebar-toggle">
+                    <span class="MD-burger-layer"></span>
+                </button>
+				
+				
+                
+	<!-- Back Button -->
+<!--
+	<div class="material-back" id="backhome-div" tabindex="0">
+		<a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="#" onclick="window.history.back();return false;" target="_self" role="button" data-upgraded=",MaterialButton,MaterialRipple">
+			<i class="material-icons" role="presentation">arrow_back</i>
+			<span class="mdl-button__ripple-container">
+				<span class="mdl-ripple"></span>
+			</span>
+		</a>
+	</div>			
+-->
+	<!-- Left aligned menu below button -->
+	<button id="post-toc-trigger-btn"
+			class="mdl-button mdl-js-button mdl-button--icon">
+	  <i class="material-icons">format_list_numbered</i>
+	</button>
+
+	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+		for="post-toc-trigger-btn">
+			
+			<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数组插入"><span class="post-toc-number">1.</span> <span class="post-toc-text">数组插入</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#优化层叠的条件判断"><span class="post-toc-number">2.</span> <span class="post-toc-text">优化层叠的条件判断</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#undefined,null的区别"><span class="post-toc-number">3.</span> <span class="post-toc-text">undefined,null的区别</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用同一个方法处理数组和单一元素"><span class="post-toc-number">4.</span> <span class="post-toc-text">使用同一个方法处理数组和单一元素</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#检查属性是否在对象上"><span class="post-toc-number">5.</span> <span class="post-toc-text">检查属性是否在对象上</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#声明提升"><span class="post-toc-number">6.</span> <span class="post-toc-text">声明提升</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#检测一小段javascript的效率"><span class="post-toc-number">7.</span> <span class="post-toc-text">检测一小段javascript的效率</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Node-js:_执行一个模块，如果它不是被required"><span class="post-toc-number">8.</span> <span class="post-toc-text">Node.js: 执行一个模块，如果它不是被required</span></a></li></ol>
+		
+<!--			<li class="mdl-menu__item">Some Action</li>-->
+	</ul>
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+		
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+	<!-- Paradox Post Header -->
+	
+		
+			<!-- Random Thumbnail -->
+			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+				<script>
+    
+    var randomNum;
+    randomNum = Math.floor(Math.random() * 5 + 1);
+    
+    $(".post_thumbnail-random").css('background-image', 'url(' + '/img/random/' + randomNum + '.png' + ')');
+    
+</script>
+
+		
+	
+        <p class="article-headline-p">
+            实用的javascript小技巧
+        </p>
+    </div>
+
+	
+
+				
+				
+					<!-- Paradox Post Info -->
+					<div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+    
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>袁帅</strong>
+        <span>4月 03, 2016</span>
+    </div>
+    
+    <div class="section-spacer"></div>
+	
+    <!-- Favorite -->
+<!--
+    <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+        <i class="material-icons" role="presentation">favorite</i>
+        <span class="visuallyhidden">favorites</span>
+    </button>
+-->
+    
+    <!-- Tags (bookmark) -->
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/javascript/">javascript</a>
+    </ul>
+    
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    
+    
+    
+    
+    <!-- Share Twitter -->
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=实用的javascript小技巧&url=http://yshuai.github.io//2016/04/03/实用的javascript小技巧/index.html&via=袁帅" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Twitter
+        </li>
+    </a>
+    
+    <!-- Share Google+ -->
+    <a class="post_share-link" href="https://plus.google.com/share?url=http://yshuai.github.io//2016/04/03/实用的javascript小技巧/index.html" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Google+
+        </li>
+    </a>
+    
+    <!-- Share Weibo -->
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=实用的javascript小技巧&url=http://yshuai.github.io//2016/04/03/实用的javascript小技巧/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <li class="mdl-menu__item">
+            分享到微博
+        </li>
+    </a>
+</ul>
+</div>
+				
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+	
+		<h2 id="数组插入"><a href="#数组插入" class="headerlink" title="数组插入"></a>数组插入</h2><p>插入数据是家常便饭了，我们可以使用push插入到数组的后端，unshift插入到数组前端，也可以使用splice插入到中间。</p><br><p>然而有相应的方法并不意味着它们就是效率最优。</p><br><p>同样是插入数据，第二种效率高很多。<br></p><div class="highlight-wrap" rel="JAVASCRIPT"><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line"></span><br><span class="line">arr.push(<span class="number">6</span>);</span><br><span class="line">arr[arr.length] = <span class="number">6</span>; <span class="comment">// 43% faster in Chrome 47.0.2526.106 on Mac OS X 10.11.1</span></span><br></pre></td></tr></tbody></table></figure></div><p></p><br><p>两种方法都修改了原始数组，不信？ 瞧瞧这里 <a href="http://jsperf.com/push-item-inside-an-array" target="_blank" rel="external">jsperf</a></p><br><p>插入到数组前端也一样，使用concat比unshift更高效。<br></p><div class="highlight-wrap" rel="JAVASCRIPT"><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line"></span><br><span class="line">arr.unshift(<span class="number">0</span>);</span><br><span class="line">[<span class="number">0</span>].concat(arr); <span class="comment">// 98% faster in Chrome 47.0.2526.106 on Mac OS X 10.11.1</span></span><br></pre></td></tr></tbody></table></figure></div><p></p><br><p>值得一提的是，unshift修改了原来的数组，而concat返回一个新的数组 <a href="http://jsperf.com/unshift-item-inside-an-array" target="_blank" rel="external">jsperf</a></p><br><p>使用splice在数组中间插入是最高效的做法了。<br></p><div class="highlight-wrap" rel="JAVASCRIPT"><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> items = [<span class="string">‘one’</span>, <span class="string">‘two’</span>, <span class="string">‘three’</span>, <span class="string">‘four’</span>];</span><br><span class="line">items.splice(items.length / <span class="number">2</span>, <span class="number">0</span>, <span class="string">‘hello’</span>);</span><br></pre></td></tr></tbody></table></figure></div><p></p><br><h2 id="优化层叠的条件判断">优化层叠的条件判断</h2><p>如果你看到这堆条件判断代码，你会如何优化它？<br></p><div class="highlight-wrap" rel="JAVASCRIPT"><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (color) {</span><br><span class="line">  <span class="keyword">if</span> (color === <span class="string">‘black’</span>) {</span><br><span class="line">    printBlackBackground();</span><br><span class="line">  } <span class="keyword">else</span> <span class="keyword">if</span> (color === <span class="string">‘red’</span>) {</span><br><span class="line">    printRedBackground();</span><br><span class="line">  } <span class="keyword">else</span> <span class="keyword">if</span> (color === <span class="string">‘blue’</span>) {</span><br><span class="line">    printBlueBackground();</span><br><span class="line">  } <span class="keyword">else</span> <span class="keyword">if</span> (color === <span class="string">‘green’</span>) {</span><br><span class="line">    printGreenBackground();</span><br><span class="line">  } <span class="keyword">else</span> {</span><br><span class="line">    printYellowBackground();</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></div><p></p><br><p>一种方式是使用switch，尽管这样能简介并且更有序，但不推荐这样做，因为会给debug增加麻烦：<a href="https://toddmotto.com/deprecating-the-switch-statement-for-object-literals/" target="_blank" rel="external">原因</a><br></p><div class="highlight-wrap" rel="JAVASCRIPT"><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">switch</span>(color) {</span><br><span class="line">  <span class="keyword">case</span> <span class="string">‘black’</span>:</span><br><span class="line">    printBlackBackground();</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="string">‘red’</span>:</span><br><span class="line">    printRedBackground();</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="string">‘blue’</span>:</span><br><span class="line">    printBlueBackground();</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="string">‘green’</span>:</span><br><span class="line">    printGreenBackground();</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">default</span>:</span><br><span class="line">    printYellowBackground();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></div><p></p><br><p>尽可能的避免使用switch，那么最高效的做法就是通过一个object了。<br></p><div class="highlight-wrap" rel="JAVASCRIPT"><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> colorObj = {</span><br><span class="line">  <span class="string">‘black’</span>: printBlackBackground,</span><br><span class="line">  <span class="string">‘red’</span>: printRedBackground,</span><br><span class="line">  <span class="string">‘blue’</span>: printBlueBackground,</span><br><span class="line">  <span class="string">‘green’</span>: printGreenBackground,</span><br><span class="line">  <span class="string">‘yellow’</span>: printYellowBackground</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (color &amp;&amp; colorObj.hasOwnProperty(color)) {</span><br><span class="line">  colorObj<a href="">color</a>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></div><p></p><br><h2 id="undefined,null的区别">undefined,null的区别</h2><ul><br><li>undefined 表示一个变量没有被定义，或者定义了没有赋值。</li><br><li>null 是用来给变量赋值，表示”没有值”</li><br><li>JavaScript 会给一个没有初始化的变量赋予undefined</li><br><li>JavaScript 从不会将值赋为null,它是被程序员用来指定一个<code>var</code> 没有值。</li><br><li>undefined 在JSON中不合法，null合法</li><br><li>undefined 的 typeof 也是 undefined</li><br><li>null 的 typeof 是 object, <a href="http://www.2ality.com/2013/10/typeof-null.html" target="_blank" rel="external">为什么</a></li><br><li>它们都是原语</li><br><li>都是 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Falsy" target="_blank" rel="external">falsy</a> (Boolean(undefined) // false, Boolean(null) // false)</li><br><li><p>判断变量是否为undefined</p><br>  <div class="highlight-wrap" rel="JAVASCRIPT"><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">typeof</span> variable === <span class="string">“undefined”</span></span><br></pre></td></tr></tbody></table></figure></div><br></li><br><li><p>判断变量是否为null</p><br>  <div class="highlight-wrap" rel="JAVASCRIPT"><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line">variable === <span class="literal">null</span></span><br></pre></td></tr></tbody></table></figure></div><br></li><br><li><p>‘==’为true, ‘===’为false</p><br>  <div class="highlight-wrap" rel="JAVASCRIPT"><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line"><span class="literal">null</span> == <span class="literal">undefined</span> <span class="comment">// true</span></span><br><span class="line"><span class="literal">null</span> === <span class="literal">undefined</span> <span class="comment">// false</span></span><br></pre></td></tr></tbody></table></figure></div><br></li><br></ul><br><h2 id="使用同一个方法处理数组和单一元素">使用同一个方法处理数组和单一元素</h2><p>与其拆分成两个方法来处理，不如写一个方法能同时处理两种情况（类似于jQuery的css方法）</p><br><p>你只需要先将它们并成一个数组，然后处理这个数据即可。</p><br><div class="highlight-wrap" rel="JAVASCRIPT"><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printUpperCase</span>(<span class="params">words</span>) </span>{</span><br><span class="line">  <span class="keyword">var</span> elements = [].concat(words);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; elements.length; i++) {</span><br><span class="line">    <span class="built_in">console</span>.log(elements[i].toUpperCase());</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></div><br><p>现在 printUpperCase 准备好了,调用吧。</p><br><div class="highlight-wrap" rel="JAVASCRIPT"><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line">printUpperCase(<span class="string">“cactus”</span>);</span><br><span class="line"><span class="comment">// =&gt; CACTUS</span></span><br><span class="line">printUpperCase([<span class="string">“cactus”</span>, <span class="string">“bear”</span>, <span class="string">“potato”</span>]);</span><br><span class="line"><span class="comment">// =&gt; CACTUS</span></span><br><span class="line"><span class="comment">//  BEAR</span></span><br><span class="line"><span class="comment">//  POTATO</span></span><br></pre></td></tr></tbody></table></figure></div><br><h2 id="检查属性是否在对象上">检查属性是否在对象上</h2><p>任何继承自Object的对象都有in,hasOwnProperty两个方法，你知道它们的区别吗？</p><br><div class="highlight-wrap" rel="JAVASCRIPT"><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> myObject = {</span><br><span class="line">  name: <span class="string">‘@tips_js’</span></span><br><span class="line">};</span><br><span class="line"></span><br><span class="line">myObject.hasOwnProperty(<span class="string">‘name’</span>); <span class="comment">// true</span></span><br><span class="line"><span class="string">‘name’</span> <span class="keyword">in</span> myObject; <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">myObject.hasOwnProperty(<span class="string">‘valueOf’</span>); <span class="comment">// false, valueOf is inherited from the prototype chain</span></span><br><span class="line"><span class="string">‘valueOf’</span> <span class="keyword">in</span> myObject; <span class="comment">// true</span></span><br></pre></td></tr></tbody></table></figure></div><br><p>只有属性是直接在对象上，hasOwnProperty 才会返回true,而 in 则是不三七二十一，把对象及其原型链都查找了一遍。</p><br><div class="highlight-wrap" rel="JAVASCRIPT"><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> myFunc = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">  <span class="keyword">this</span>.name = <span class="string">‘@tips_js’</span>;</span><br><span class="line">};</span><br><span class="line">myFunc.prototype.age = <span class="string">‘10 days’</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> user = <span class="keyword">new</span> myFunc();</span><br><span class="line"></span><br><span class="line">user.hasOwnProperty(<span class="string">‘name’</span>); <span class="comment">// true</span></span><br><span class="line">user.hasOwnProperty(<span class="string">‘age’</span>); <span class="comment">// false, because age is from the prototype chain</span></span><br></pre></td></tr></tbody></table></figure></div><br><p><a href="https://jsbin.com/tecoqa/edit?js,console" target="_blank" rel="external">Demo</a> 看这里</p><br><h2 id="声明提升">声明提升</h2><p>理解好<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var#var_hoisting" target="_blank" rel="external">声明提升</a>将会帮助你组织好函数作用域。记住，变量声明和函数定义都会被提升。然而不管你是否在同一行声明定义了其他变量，变量定义都不会提升。变量声明是让操作系统知道这是个变量，而定义是给这个变量赋值。</p><br><div class="highlight-wrap" rel="JAVASCRIPT"><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doTheThing</span>(<span class="params"></span>) </span>{</span><br><span class="line">  <span class="comment">// ReferenceError: notDeclared is not defined</span></span><br><span class="line">  <span class="built_in">console</span>.log(notDeclared);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Outputs: undefined</span></span><br><span class="line">  <span class="built_in">console</span>.log(definedLater);</span><br><span class="line">  <span class="keyword">var</span> definedLater;</span><br><span class="line"></span><br><span class="line">  definedLater = <span class="string">‘I am defined!’</span></span><br><span class="line">  <span class="comment">// Outputs: ‘I am defined!’</span></span><br><span class="line">  <span class="built_in">console</span>.log(definedLater)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Outputs: undefined</span></span><br><span class="line">  <span class="built_in">console</span>.log(definedSimulateneously);</span><br><span class="line">  <span class="keyword">var</span> definedSimulateneously = <span class="string">‘I am defined!’</span></span><br><span class="line">  <span class="comment">// Outputs: ‘I am defined!’</span></span><br><span class="line">  <span class="built_in">console</span>.log(definedSimulateneously)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Outputs: ‘I did it!’</span></span><br><span class="line">  doSomethingElse();</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">doSomethingElse</span>(<span class="params"></span>)</span>{</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">‘I did it!’</span>);</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">  <span class="comment">// TypeError: undefined is not a function</span></span><br><span class="line">  functionVar();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> functionVar = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">‘I did it!’</span>);</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></div><br><p>为了让代码可读性更高，尽量把你的变量在函数作用域顶部声明，使用之前要明确。</p><br><h2 id="检测一小段javascript的效率">检测一小段javascript的效率</h2><p>为了快速检测javascript代码块的执行效率，我们可以使用 console 方法，比如 console.time(label) 和 console.timeEnd(label)</p><br><div class="highlight-wrap" rel="JAVASCRIPT"><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.time(<span class="string">“Array initialize”</span>);</span><br><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">100</span>),</span><br><span class="line">    len = arr.length,</span><br><span class="line">    i;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) {</span><br><span class="line">    arr[i] = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">};</span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">“Array initialize”</span>); <span class="comment">// Outputs: Array initialize: 0.711ms</span></span><br></pre></td></tr></tbody></table></figure></div><br><p>更多信息：<a href="https://github.com/DeveloperToolsWG/console-object" target="_blank" rel="external">Console Object</a><br>Demo: <a href="https://jsfiddle.net/meottb62/" target="_blank" rel="external">jsfiddle</a></p><br><h2 id="Node-js:_执行一个模块，如果它不是被required">Node.js: 执行一个模块，如果它不是被required</h2><p>在node中，你可以告知程序在require(‘./something.js’) 和 node something.js 时触发不同的代码。</p><br><div class="highlight-wrap" rel="JAVASCRIPT"><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">module</span>.parent) {</span><br><span class="line">    <span class="comment">// ran with <code>node something.js</code></span></span><br><span class="line">    app.listen(<span class="number">8088</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">‘app listening on port 8088’</span>);</span><br><span class="line">    })</span><br><span class="line">} <span class="keyword">else</span> {</span><br><span class="line">    <span class="comment">// used with <code>require(&#39;/.something.js&#39;)</code></span></span><br><span class="line">    <span class="built_in">module</span>.exports = app;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></div><br><p>查看<a href="https://nodejs.org/api/modules.html#modules_module_parent" target="_blank" rel="external">文档</a>了解更多。</p><br><p>本文的内容部分翻译自：<a href="https://github.com/loverajoel/jstips" target="_blank" rel="external">https://github.com/loverajoel/jstips</a>，一个分享js技巧的仓库，每日更新，感兴趣的自行关注。</p>
+
+<pre><code>            &lt;blockquote&gt;
+
+
+         &lt;p&gt;如需转载，请注明出处: &lt;a href=&quot;http://w3ctrain.com/2016/01/19/jstips/&quot; title=&quot;http://w3ctrain.com/2016/01/19/jstips/&quot;&gt;http://w3ctrain.com/2016/01/19/jstips/&lt;/a&gt; ，欢迎加入前端Q群（ 467969149 ）&lt;/p&gt;
+                 &lt;/blockquote&gt;
+
+
+&lt;/div&gt;
+</code></pre>
+	
+	
+	
+	
+</div>
+				
+				
+
+                <!-- Post Comments -->
+                
+
+
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    
+    <!-- Prev Nav -->
+    
+        <a href="/2016/08/01/软件推荐系列/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2015/12/27/ubuntu+github+hexo搭建个人博客/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+        </div>
+    </div>
+
+				
+				
+					<!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay "></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored  sidebar-fixed-left" role="navigation">
+	<div id="sidebar-main">
+	    <!-- Sidebar Header -->
+		<div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+    <i class="material-icons">clear_all</i>
+    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="袁帅's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        youremail@email.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+		<!-- Sidebar Navigation  -->
+		<ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+			
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+						<i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    <li id="sidebar-first-li">
+        <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+             主页
+        </a>
+    </li>
+
+    <!-- I'm Feeling Lucky -->
+<!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+-->
+
+	
+    <!-- Archives  -->
+    <li class="dropdown">
+        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             归档
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+            <a class="sidebar_archives-link" href="/archives/2016/09/">九月 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">八月 2016<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/04/">四月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/12/">十二月 2015<span class="sidebar_archives-count">1</span></a>
+        </ul>
+    </li>
+
+    <!-- Divider -->
+    <li class="divider"></li>
+
+
+    <!-- Pages  -->
+	
+
+    <!-- Article Numebr  -->
+    <li>
+        <a href="/archives">
+             文章总数
+             <span class="sidebar-badge">9</span>
+        </a>
+    </li>
+</ul>
+
+		<!-- Sidebar Divider -->
+		<div class="sidebar-divider"></div>
+
+		<!-- Sidebar Footer -->
+		<!-- 
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持。 :) 
+-->
+
+<!-- Theme Material -->
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+	<div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		主题 - Material
+		<span class="sidebar-badge badge-circle">i</span>
+	</div>
+</a>
+
+<!-- Help & Support -->
+<!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		sidebar.help
+		<span class="mdl-button__ripple-container">
+			<span class="mdl-ripple"></span>
+		</span>
+	</div>
+</a>
+-->
+
+<!-- Feedback -->
+<!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+<!-- Abount Theme -->
+<!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+
+	</div>
+    
+    <!-- Sidebar Sponsor -->
+    
+
+
+</aside>
+
+				
+				
+				
+					<!-- Footer Top Button -->
+					<div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+				
+				
+				<!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+	
+	
+		<!-- Paradox Footer Left Section -->
+		<div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+    <a href="https://twitter.com/twitter" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.png);">
+        <span class="visuallyhidden">Twitter</span>
+    </button></a>
+    
+    
+    <!-- Facebook -->
+    
+    <a href="https://www.facebook.com/facebook" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.png);">
+        <span class="visuallyhidden">Facebook</span>
+    </button></a>
+    
+    
+    <!-- Google + -->
+    
+    <a href="https://www.google.com/" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
+        <span class="visuallyhidden">Google Plus</span>
+    </button></a>
+    
+    
+    <!-- Weibo -->
+    
+    
+    
+    <!-- Instagram -->
+    
+    
+    
+    <!-- Tumblr -->
+    
+    
+    
+    <!-- Github -->
+    
+    
+</div>
+
+
+		<!--Copyright-->
+		<div id="copyright">Copyright&nbsp;©&nbsp;<script type="text/javascript">var fd = new Date();document.write(fd.getFullYear());</script>&nbsp;前端，python和运维</div>
+
+		<!-- Paradox Footer Right Section -->
+
+		<!-- 
+		I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+		It will not impact the appearance and can give developers a lot of support :)
+
+		很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+		它不会影响美观并可以给开发者很大的支持。 :) 
+		-->
+
+		<div class="mdl-mini-footer--right-section">
+			<div>
+				<div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+				<div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+			</div>
+		</div>
+	
+    
+</footer>
+                
+				<!-- Import File -->
+<script src="/js/highlight.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+    
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $(".post-toc-wrap").parent(".mdl-menu__container").css("position", "fixed");
+    });
+</script>
+
+<!-- MathJax Load-->
+
+            </main>
+        </div>
+		
+    </body>
+		
+	
+</html>

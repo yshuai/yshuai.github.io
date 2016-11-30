@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!-- Title -->
+    
+    <title>
+        linux命令 | 前端，python和运维
+    </title>
+    
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+    
+    <!-- Meta & INfo -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="袁帅">
+    <meta name="description" content="null">
+    <meta name="keywords" content="null">
+    
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+    
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="前端，python和运维">
+    
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yshuai.github.io">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="linux命令 | 前端，python和运维">
+    <meta property="og:description" content="null">
+    
+     <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+        
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+    
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+	body, html{
+		font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+	}
+	
+    a{
+        color: #00838F
+    }
+    
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge{
+        background-color: #0097A7 !important
+    }
+    
+	/* Sidebar User Drop Down Menu Text Color */
+	#scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus{
+        color: #0097A7 !important
+    }
+    
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover > a,
+    .sidebar-colored .sidebar-nav li:hover > a i,
+    .sidebar-colored .sidebar-nav li > a:hover,
+    .sidebar-colored .sidebar-nav li > a:hover i,
+    .sidebar-colored .sidebar-nav li > a:focus i,
+    .sidebar-colored .sidebar-nav > .open > a,
+    .sidebar-colored .sidebar-nav > .open > a:hover,
+    .sidebar-colored .sidebar-nav > .open > a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a{
+        color: #0097A7 !important
+    }
+    
+    .toTop{
+        background: #757575 !important
+    }
+		
+	.material-layout .material-post>.material-nav,
+	.material-layout .material-index>.material-nav,
+	.material-nav a{
+		color: #757575;
+	}
+		
+	#scheme-Paradox .MD-burger-layer {
+		background-color: #757575;
+	}
+
+	#scheme-Paradox #post-toc-trigger-btn{
+		color: #757575;
+	}
+	
+	.post-toc a:hover{
+		color: #00838F;
+		text-decoration: underline;
+	}
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+        body{
+            background-color: #F5F5F5
+        }
+		
+		/* blog_info bottom background */
+        #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+            background-color: #fff;
+        }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+        .fade {
+            transition: all 800ms linear;
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            opacity: 1;
+        }
+
+        .fade.out{
+            opacity: 0;
+        }
+    </style>
+
+	<script src="/js/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="/css/highlight/solarized-white.css">
+	
+	<!-- UC Browser Compatible-->
+	<script>
+		var agent = navigator.userAgent.toLowerCase();
+		if(agent.indexOf('ucbrowser')>0) {
+			document.write('<link rel="stylesheet" href="/css/uc.css">');
+		   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+		}
+	</script>
+    
+    <!-- Custom Head -->
+    
+</head>
+	
+	
+
+    <body id="scheme-Paradox">
+
+		
+        <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+				
+			
+			
+            <!-- Main Container -->
+            <main class="material-layout__content" id="main">
+				
+                <!-- Top Anchor -->
+                <div id="top"></div>
+				
+				
+                <!-- Hamburger Button -->
+                <button class="MD-burger-icon sidebar-toggle">
+                    <span class="MD-burger-layer"></span>
+                </button>
+				
+				
+                
+	<!-- Back Button -->
+<!--
+	<div class="material-back" id="backhome-div" tabindex="0">
+		<a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="#" onclick="window.history.back();return false;" target="_self" role="button" data-upgraded=",MaterialButton,MaterialRipple">
+			<i class="material-icons" role="presentation">arrow_back</i>
+			<span class="mdl-button__ripple-container">
+				<span class="mdl-ripple"></span>
+			</span>
+		</a>
+	</div>			
+-->
+	<!-- Left aligned menu below button -->
+	<button id="post-toc-trigger-btn"
+			class="mdl-button mdl-js-button mdl-button--icon">
+	  <i class="material-icons">format_list_numbered</i>
+	</button>
+
+	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+		for="post-toc-trigger-btn">
+			
+			
+		
+<!--			<li class="mdl-menu__item">Some Action</li>-->
+	</ul>
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+		
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+	<!-- Paradox Post Header -->
+	
+		
+			<!-- Random Thumbnail -->
+			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+				<script>
+    
+    var randomNum;
+    randomNum = Math.floor(Math.random() * 5 + 1);
+    
+    $(".post_thumbnail-random").css('background-image', 'url(' + '/img/random/' + randomNum + '.png' + ')');
+    
+</script>
+
+		
+	
+        <p class="article-headline-p">
+            linux命令
+        </p>
+    </div>
+
+	
+
+				
+				
+					<!-- Paradox Post Info -->
+					<div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+    
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>袁帅</strong>
+        <span>8月 28, 2016</span>
+    </div>
+    
+    <div class="section-spacer"></div>
+	
+    <!-- Favorite -->
+<!--
+    <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+        <i class="material-icons" role="presentation">favorite</i>
+        <span class="visuallyhidden">favorites</span>
+    </button>
+-->
+    
+    <!-- Tags (bookmark) -->
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/linux-运维/">linux 运维</a>
+    </ul>
+    
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    
+    
+    
+    
+    <!-- Share Twitter -->
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=linux命令&url=http://yshuai.github.io//2016/08/28/运维第二课_linux命令及基本权限/index.html&via=袁帅" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Twitter
+        </li>
+    </a>
+    
+    <!-- Share Google+ -->
+    <a class="post_share-link" href="https://plus.google.com/share?url=http://yshuai.github.io//2016/08/28/运维第二课_linux命令及基本权限/index.html" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Google+
+        </li>
+    </a>
+    
+    <!-- Share Weibo -->
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=linux命令&url=http://yshuai.github.io//2016/08/28/运维第二课_linux命令及基本权限/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <li class="mdl-menu__item">
+            分享到微博
+        </li>
+    </a>
+</ul>
+</div>
+				
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+	
+		<p>###系统相关</p>
+<ul>
+<li>查看用户名：hostname</li>
+<li>查看用户相关： uname -a </li>
+<li>版本号：uname -r 主+次+派生+修正</li>
+<li>次生版本：奇数，测试版本；偶数，稳定版本</li>
+<li>echo “hello” -S “from root”|mail tom@localhost</li>
+<li>cat /etc/shells 查看shell</li>
+<li>passwd -d 删除用户密码 </li>
+<li>passwd -l 锁定用户</li>
+</ul>
+<p>###如何切界面<br>linux 分 图形界面    文本界面<br>linux有7个运行级别<br><code>init  命令</code></p>
+<ul>
+<li>文本界面 init  1 2 3 4 <ul>
+<li>init 1    单用户界面     安全模式 不支持网络</li>
+<li>init 2   不支持网络的多用户界面</li>
+<li>init 3   完全 多用户 文本界面   一般我们工作在这个模式</li>
+<li>init 4   未定义</li>
+<li>init 5   图形界面</li>
+<li>init 0   关机</li>
+<li>init 6 重启</li>
+</ul>
+</li>
+</ul>
+<p>图形界面  如何使用命令    —– 》 终端</p>
+<p>linux  命令格式</p>
+<ol>
+<li>区分大小写  </li>
+<li>主命令     命令选项     参数<ol>
+<li>命令补全   两次tab键</li>
+<li>终止某个操作   ctrl+c</li>
+</ol>
+</li>
+</ol>
+<p>linux 用户分为两种   <code>管理员和普通用户</code></p>
+<p><code>管理员的命令  用户不一定能用   但是用户的命令管理员肯定能用</code></p>
+<p>###linux 关机   重启   注销<br>关机命令   通用命令   halt         |     init 0       shutdown -h   {+N|now}<br>重启命令              reboot        |     init 6      shutdown -r  {+N|now}<br>注销命令              logout     exit </p>
+<p>###常用命令</p>
+<ul>
+<li>进入文件夹的命令 cd </li>
+<li>cd -   返回上次所在目录    cd ..  返回上一级目录</li>
+<li>定位自己当前位置  pwd</li>
+<li>清屏      clear   ctrl+l</li>
+<li>列出某个文件夹下的子目录或文件   ls  <ul>
+<li>ls -l   列出详细信息   列表形式列出 </li>
+<li>-h  列出文件大小的时候 以 K M G单位显示</li>
+<li>d 显示目录的详细信息</li>
+<li>-i 显示该文件的i节点 对应的系统中只有一个文件 </li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>cp 复制命令 可以复制改名；</p>
+<ul>
+<li>cp -a 防止权限改变      </li>
+<li>cp  -r 复制目录时使用</li>
+</ul>
+</li>
+<li><p>列出上次使用命令空格后面的内容 alt+.    </p>
+</li>
+<li><p><code>帮助   man      例子：man ls</code></p>
+</li>
+</ul>
+<p>###别名：<br> 设置别名：alias<br>删除别名：unalias</p>
+<p>例如: alias ls=’cd /‘    ls命令即被修改成cd /命令；<br>unalias ls    ls即恢复正常； </p>
+<p>###文件和文件夹的管理<br>注意:linux设计思想     在linux 一切都是文件<br>      在linux中  所有设备都是一个文件<br>      例子：/dev/cdrom    代表的就是光驱</p>
+<p>注意  linux 系统中 根下文件夹介绍 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">bin   dev  home  lib64       media  mnt  opt   root  selinux  sys  usr</div><div class="line">boot  etc  lib   lost+found  misc   net  proc  sbin  srv      tmp  var</div></pre></td></tr></table></figure>
+<ul>
+<li>/bin  普通用户和管理员可以使用的命令   </li>
+<li>/sbin  管理员可以使用的命令</li>
+<li>/dev   设备文件   光驱   硬盘  等</li>
+<li>/etc   配置文件  </li>
+<li>/home  普通用户的家目录</li>
+<li>/media 自动挂载目录  /mnt  手动挂载目录</li>
+<li>/lib   /lib64   库文件   </li>
+<li>/opt   三方程序安装路径</li>
+<li>/root  管理员的家目录</li>
+<li>/tmp   临时文件存放目录</li>
+<li>/var   日志存放目录</li>
+<li>/proc  内存系统</li>
+</ul>
+<p>###文件夹的管理  </p>
+<ol>
+<li>增  mkdir 文件夹名字<ul>
+<li>-p  递归创建<ul>
+<li>-v  显示创建结果</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>删  空文件夹  rmdir   不为空的目录   rm -r 目录名</li>
+<li>改  mv   改名    移动<ul>
+<li>mv  源文件名   目标文件名</li>
+<li>如果目标文件名不是一个目录  执行改名</li>
+<li>如果目标文件名是一个目录  执行移动</li>
+</ul>
+</li>
+</ol>
+<ol>
+<li>查  ls -l   </li>
+</ol>
+<p>###文件的管理</p>
+<ol>
+<li>增   touch filename</li>
+<li>删   rm   -r 递归删除   -f  强制直接删除    注意：rm 删除不走回收站</li>
+<li>改   mv   改名    移动<br> mv  源文件名   目标文件名<br>   如果目标文件名不是一个目录  执行改名 </li>
+<li>查   cat 查看文件内容</li>
+</ol>
+<p>编辑文件的命令  图形界面   gedit   文本界面  vim</p>
+<p>###文件的基本权限</p>
+<p><code>-rw-r--r--. 1 root root 62  file1</code><br> <code>r    w  write  x    -表示 没有权限</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">| - |   rw-   |   r--   |   r-- |1|root|root|62|9月  19 02:50|file1</div><div class="line">| 普通文件  |所有者权限   |所属组权限  |其他人权限|i节点 此文件对应的系统中只有一个文件  |所有者|所属组|字节数|最后修改时间|文件名</div></pre></td></tr></table></figure></p>
+<p>####文件的类型</p>
+<ul>
+<li>普通文件</li>
+<li>d 目录</li>
+<li>l 链接     快捷方式</li>
+<li>b 设备文件   </li>
+<li>c 字符型设备  </li>
+<li>p 管道文件  </li>
+</ul>
+<p>####权限修改<br>chmod </p>
+<ul>
+<li>a  all </li>
+<li>u  user</li>
+<li>g  group</li>
+<li>o  other</li>
+<li>+添加权限 </li>
+<li>-删除权限</li>
+</ul>
+<p>权限</p>
+<ul>
+<li>r  read   </li>
+<li>w write</li>
+<li>x execute</li>
+<li><ul>
+<li>没有权限</li>
+</ul>
+</li>
+</ul>
+<p>修改权限方法:</p>
+<ol>
+<li>chmod  u+x,g-w,o-rwx file1</li>
+<li>数字加权法: 所以一类用户对它如果有所有权限     数字就是4+2+1=7      7 7 7<ul>
+<li>r   4</li>
+<li>w   2</li>
+<li>x   1</li>
+</ul>
+</li>
+</ol>
+<p>chmod 664 file1<br>rw-rw-r–</p>
+<p>###所有者  所属组修改</p>
+<p>所有者    chown      chown 新的所有者   文件或目录名<br>所属组    chgrp      chgrp 新组名       文件或目录名</p>
+<p>命令选项   如果对文件夹进行修改的时候  希望子目录也跟着修改   请用-R来递归设置    适用于  chmod chown chgrp </p>
+<p>如果用户名和组都想改<br>chown 新用户名.新组名    文件名</p>
+<p>###用户管理<br>创建用户<br>useradd  new_username  </p>
+<p>任务   man useradd 命令</p>
+<p>设置密码<br>passwd  username </p>
+<p>切换用户   su - 用户名</p>
+
+	
+	
+	
+	
+</div>
+				
+				
+
+                <!-- Post Comments -->
+                
+
+
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    
+    <!-- Prev Nav -->
+    
+        <a href="/2016/09/08/运维第五课－－网络详解/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2016/08/01/windows7-8-10系统安装/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+        </div>
+    </div>
+
+				
+				
+					<!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay "></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored  sidebar-fixed-left" role="navigation">
+	<div id="sidebar-main">
+	    <!-- Sidebar Header -->
+		<div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+    <i class="material-icons">clear_all</i>
+    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="袁帅's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        youremail@email.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+		<!-- Sidebar Navigation  -->
+		<ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+			
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+						<i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    <li id="sidebar-first-li">
+        <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+             主页
+        </a>
+    </li>
+
+    <!-- I'm Feeling Lucky -->
+<!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+-->
+
+	
+    <!-- Archives  -->
+    <li class="dropdown">
+        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             归档
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+            <a class="sidebar_archives-link" href="/archives/2016/09/">九月 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">八月 2016<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/04/">四月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/12/">十二月 2015<span class="sidebar_archives-count">1</span></a>
+        </ul>
+    </li>
+
+    <!-- Divider -->
+    <li class="divider"></li>
+
+
+    <!-- Pages  -->
+	
+
+    <!-- Article Numebr  -->
+    <li>
+        <a href="/archives">
+             文章总数
+             <span class="sidebar-badge">9</span>
+        </a>
+    </li>
+</ul>
+
+		<!-- Sidebar Divider -->
+		<div class="sidebar-divider"></div>
+
+		<!-- Sidebar Footer -->
+		<!-- 
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持。 :) 
+-->
+
+<!-- Theme Material -->
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+	<div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		主题 - Material
+		<span class="sidebar-badge badge-circle">i</span>
+	</div>
+</a>
+
+<!-- Help & Support -->
+<!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		sidebar.help
+		<span class="mdl-button__ripple-container">
+			<span class="mdl-ripple"></span>
+		</span>
+	</div>
+</a>
+-->
+
+<!-- Feedback -->
+<!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+<!-- Abount Theme -->
+<!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+
+	</div>
+    
+    <!-- Sidebar Sponsor -->
+    
+
+
+</aside>
+
+				
+				
+				
+					<!-- Footer Top Button -->
+					<div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+				
+				
+				<!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+	
+	
+		<!-- Paradox Footer Left Section -->
+		<div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+    <a href="https://twitter.com/twitter" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.png);">
+        <span class="visuallyhidden">Twitter</span>
+    </button></a>
+    
+    
+    <!-- Facebook -->
+    
+    <a href="https://www.facebook.com/facebook" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.png);">
+        <span class="visuallyhidden">Facebook</span>
+    </button></a>
+    
+    
+    <!-- Google + -->
+    
+    <a href="https://www.google.com/" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
+        <span class="visuallyhidden">Google Plus</span>
+    </button></a>
+    
+    
+    <!-- Weibo -->
+    
+    
+    
+    <!-- Instagram -->
+    
+    
+    
+    <!-- Tumblr -->
+    
+    
+    
+    <!-- Github -->
+    
+    
+</div>
+
+
+		<!--Copyright-->
+		<div id="copyright">Copyright&nbsp;©&nbsp;<script type="text/javascript">var fd = new Date();document.write(fd.getFullYear());</script>&nbsp;前端，python和运维</div>
+
+		<!-- Paradox Footer Right Section -->
+
+		<!-- 
+		I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+		It will not impact the appearance and can give developers a lot of support :)
+
+		很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+		它不会影响美观并可以给开发者很大的支持。 :) 
+		-->
+
+		<div class="mdl-mini-footer--right-section">
+			<div>
+				<div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+				<div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+			</div>
+		</div>
+	
+    
+</footer>
+                
+				<!-- Import File -->
+<script src="/js/highlight.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+    
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $(".post-toc-wrap").parent(".mdl-menu__container").css("position", "fixed");
+    });
+</script>
+
+<!-- MathJax Load-->
+
+            </main>
+        </div>
+		
+    </body>
+		
+	
+</html>

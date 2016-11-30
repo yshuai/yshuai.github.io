@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!-- Title -->
+    
+    <title>
+        cacti使用 | 前端，python和运维
+    </title>
+    
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+    
+    <!-- Meta & INfo -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="袁帅">
+    <meta name="description" content="null">
+    <meta name="keywords" content="null">
+    
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+    
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="前端，python和运维">
+    
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yshuai.github.io">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="cacti使用 | 前端，python和运维">
+    <meta property="og:description" content="null">
+    
+     <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+        
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+    
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+	body, html{
+		font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+	}
+	
+    a{
+        color: #00838F
+    }
+    
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge{
+        background-color: #0097A7 !important
+    }
+    
+	/* Sidebar User Drop Down Menu Text Color */
+	#scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus{
+        color: #0097A7 !important
+    }
+    
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover > a,
+    .sidebar-colored .sidebar-nav li:hover > a i,
+    .sidebar-colored .sidebar-nav li > a:hover,
+    .sidebar-colored .sidebar-nav li > a:hover i,
+    .sidebar-colored .sidebar-nav li > a:focus i,
+    .sidebar-colored .sidebar-nav > .open > a,
+    .sidebar-colored .sidebar-nav > .open > a:hover,
+    .sidebar-colored .sidebar-nav > .open > a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a{
+        color: #0097A7 !important
+    }
+    
+    .toTop{
+        background: #757575 !important
+    }
+		
+	.material-layout .material-post>.material-nav,
+	.material-layout .material-index>.material-nav,
+	.material-nav a{
+		color: #757575;
+	}
+		
+	#scheme-Paradox .MD-burger-layer {
+		background-color: #757575;
+	}
+
+	#scheme-Paradox #post-toc-trigger-btn{
+		color: #757575;
+	}
+	
+	.post-toc a:hover{
+		color: #00838F;
+		text-decoration: underline;
+	}
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+        body{
+            background-color: #F5F5F5
+        }
+		
+		/* blog_info bottom background */
+        #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+            background-color: #fff;
+        }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+        .fade {
+            transition: all 800ms linear;
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            opacity: 1;
+        }
+
+        .fade.out{
+            opacity: 0;
+        }
+    </style>
+
+	<script src="/js/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="/css/highlight/solarized-white.css">
+	
+	<!-- UC Browser Compatible-->
+	<script>
+		var agent = navigator.userAgent.toLowerCase();
+		if(agent.indexOf('ucbrowser')>0) {
+			document.write('<link rel="stylesheet" href="/css/uc.css">');
+		   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+		}
+	</script>
+    
+    <!-- Custom Head -->
+    
+</head>
+	
+	
+
+    <body id="scheme-Paradox">
+
+		
+        <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+				
+			
+			
+            <!-- Main Container -->
+            <main class="material-layout__content" id="main">
+				
+                <!-- Top Anchor -->
+                <div id="top"></div>
+				
+				
+                <!-- Hamburger Button -->
+                <button class="MD-burger-icon sidebar-toggle">
+                    <span class="MD-burger-layer"></span>
+                </button>
+				
+				
+                
+	<!-- Back Button -->
+<!--
+	<div class="material-back" id="backhome-div" tabindex="0">
+		<a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="#" onclick="window.history.back();return false;" target="_self" role="button" data-upgraded=",MaterialButton,MaterialRipple">
+			<i class="material-icons" role="presentation">arrow_back</i>
+			<span class="mdl-button__ripple-container">
+				<span class="mdl-ripple"></span>
+			</span>
+		</a>
+	</div>			
+-->
+	<!-- Left aligned menu below button -->
+	<button id="post-toc-trigger-btn"
+			class="mdl-button mdl-js-button mdl-button--icon">
+	  <i class="material-icons">format_list_numbered</i>
+	</button>
+
+	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+		for="post-toc-trigger-btn">
+			
+			<ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#cacti"><span class="post-toc-number">1.</span> <span class="post-toc-text">cacti</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#监控主机设置"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">监控主机设置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#被监控主机设置"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">被监控主机设置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#监控主机cacti设置"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">监控主机cacti设置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#添加主机："><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">添加主机：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#添加新图形"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">添加新图形</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#报警设置"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">报警设置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#更改cacti采集数据延迟"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">更改cacti采集数据延迟</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#用户管理"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">用户管理</span></a></li></ol></li></ol>
+		
+<!--			<li class="mdl-menu__item">Some Action</li>-->
+	</ul>
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+		
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+	<!-- Paradox Post Header -->
+	
+		
+			<!-- Random Thumbnail -->
+			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+				<script>
+    
+    var randomNum;
+    randomNum = Math.floor(Math.random() * 5 + 1);
+    
+    $(".post_thumbnail-random").css('background-image', 'url(' + '/img/random/' + randomNum + '.png' + ')');
+    
+</script>
+
+		
+	
+        <p class="article-headline-p">
+            cacti使用
+        </p>
+    </div>
+
+	
+
+				
+				
+					<!-- Paradox Post Info -->
+					<div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+    
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>袁帅</strong>
+        <span>9月 30, 2016</span>
+    </div>
+    
+    <div class="section-spacer"></div>
+	
+    <!-- Favorite -->
+<!--
+    <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+        <i class="material-icons" role="presentation">favorite</i>
+        <span class="visuallyhidden">favorites</span>
+    </button>
+-->
+    
+    <!-- Tags (bookmark) -->
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/运维-linux-监控/">运维 linux 监控</a>
+    </ul>
+    
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    
+    
+    
+    
+    <!-- Share Twitter -->
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=cacti使用&url=http://yshuai.github.io//2016/09/30/运维第13课cacti/index.html&via=袁帅" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Twitter
+        </li>
+    </a>
+    
+    <!-- Share Google+ -->
+    <a class="post_share-link" href="https://plus.google.com/share?url=http://yshuai.github.io//2016/09/30/运维第13课cacti/index.html" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Google+
+        </li>
+    </a>
+    
+    <!-- Share Weibo -->
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=cacti使用&url=http://yshuai.github.io//2016/09/30/运维第13课cacti/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <li class="mdl-menu__item">
+            分享到微博
+        </li>
+    </a>
+</ul>
+</div>
+				
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+	
+		<h1 id="cacti"><a href="#cacti" class="headerlink" title="cacti"></a>cacti</h1><h2 id="监控主机设置"><a href="#监控主机设置" class="headerlink" title="监控主机设置"></a>监控主机设置</h2><ol>
+<li><strong>系统安装</strong>，用cacti镜像装虚拟机；选 redhat 32位，网络桥接</li>
+<li><strong>登陆</strong>：账号<code>root</code>，密码：<code>CactiEZ</code>,修改密码；</li>
+<li><strong>网络设置</strong>：<ul>
+<li>判断能否上网；ping baidu.com，</li>
+<li>修改ip地址</li>
+</ul>
+</li>
+</ol>
+<h2 id="被监控主机设置"><a href="#被监控主机设置" class="headerlink" title="被监控主机设置"></a>被监控主机设置</h2><p>   <strong><code>cacti监控方式</code></strong>：snmp<br>  <strong>被监控主机</strong> 也需要支持：snmp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">被监控主机|linux | windows</div><div class="line">安装snmp|yum -y install net-snmp* |程序与功能，简单网络管理协议下的WMI SNMP程序</div><div class="line">启动snmp服务|/etc/init.d/snmpd start ,chkconfig snmpd on|服务--&gt;SNMP Service自动运行，正在运行状态</div></pre></td></tr></table></figure></p>
+<p><strong> 配置被监控的Linux客户机</strong></p>
+<p>说明：要使用CactiEZ监控一台Linux主机，需要在被监控的主机上安装net-snmp等相关的软件包；<br>同时需要<code>开启防火墙UDP161端口</code></p>
+<ol>
+<li><p>开启防火墙UDP161端口</p>
+<ul>
+<li>vi /etc/sysconfig/iptables #编辑防火墙配置:    <code>-A INPUT -m state --state NEW -m udp -p udp --dport 161 -j ACCEPT</code></li>
+<li>/etc/init.d/iptables restart #重启防火墙使配置生效</li>
+</ul>
+</li>
+<li><p>配置snmp</p>
+<ul>
+<li>cp /etc/snmp/snmpd.conf /etc/snmp/snmpd.confbak #备份配置文件</li>
+<li><p>vi snmpd.conf #添加下面代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">com2sec ro 0.0.0.0/0 public  ##建立一个组，允许所有人可读</div><div class="line"> com2sec rw localhost private  ##建立另一个组，允许所有人可读写</div><div class="line"> group public v1 ro</div><div class="line"> group public v2c ro</div><div class="line"> group public usm ro</div><div class="line"> group private v1 rw</div><div class="line"> group private v2c rw</div><div class="line"> group private usm rw</div><div class="line"> view all included .1</div><div class="line"> access public &quot;&quot; any noauth exact all none none  ##不验证</div><div class="line"> access private &quot;&quot; any noauth exact all all all</div></pre></td></tr></table></figure>
+</li>
+<li><p>service snmpd restart #重启snmp</p>
+</li>
+<li>netstat -nlup |grep “:161” #检查snmp服务器是否运行，出现下面输出结果，说明snmp运行正常<br><code>udp 0 0 0.0.0.0:161 0.0.0.0:* 3265/snmpd</code><br><strong>监控主机操作</strong>：<br>snmpwalk -v 2c -c public 192.168.0.117（若timeout，关闭被监控linux主机的防火墙）<br>-v版本<br>-c 以哪个组的身份<br>链接ip地址；<br>验证是否监控成功，5s中内完成，则失败；</li>
+</ul>
+</li>
+</ol>
+<h2 id="监控主机cacti设置"><a href="#监控主机cacti设置" class="headerlink" title="监控主机cacti设置"></a>监控主机cacti设置</h2><p>在<code>被监控主机</code>的浏览器中输入<code>监控主机</code>的<code>ip地址</code>，账号密码都是admin；修改密码<br><code>缺点</code>：5分钟以后出图；</p>
+<h3 id="添加主机："><a href="#添加主机：" class="headerlink" title="添加主机："></a>添加主机：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">主机————》添加</div><div class="line">设置，描述： 城市_运营商_-_250（被监控的ip地址，后2位）</div><div class="line">被监控主机的ip地址</div><div class="line">主机模板设置（选择linux或windows模板）</div><div class="line">监视主机</div><div class="line">主机宕机消息：</div><div class="line">    XX公司  mysql服务器 联系人：   联系电话：</div><div class="line"></div><div class="line">检测超时：</div><div class="line">重试次数：</div><div class="line">SNMP团体名称：</div><div class="line">添加</div><div class="line">添加成功后有提示，</div><div class="line">宕机提示。（5分钟前的数据）：</div></pre></td></tr></table></figure>
+<h3 id="添加新图形"><a href="#添加新图形" class="headerlink" title="添加新图形"></a>添加新图形</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1.为这个主机添加图形，</div><div class="line">2.然后选择图形模板，根据需求选择（可以全选）</div><div class="line">3。监控网卡，根据ip地址选择监控的网卡（选择，流入流出字节数），根据主机位数选择32位还是64位</div><div class="line">4保存</div></pre></td></tr></table></figure>
+<p>###添加到图形树；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">图形树：</div><div class="line">添加图形树</div><div class="line">添加树对象（根据被监控主机选择添加几个）</div><div class="line"></div><div class="line">**别打开图形树，不然要做两遍；**</div><div class="line"></div><div class="line">切换回主机</div><div class="line">勾选linux主机</div><div class="line">添加到树</div><div class="line">添加到lin分支；</div><div class="line"></div><div class="line">勾选windows主机</div><div class="line">添加到树</div><div class="line">添加到win分支</div></pre></td></tr></table></figure></p>
+<p><strong> 做完后可以打开图形树</strong></p>
+<p>打开<code>监视</code>,查看状态；</p>
+<h2 id="报警设置"><a href="#报警设置" class="headerlink" title="报警设置"></a>报警设置</h2><p><img src="http://7xodej.com1.z0.glb.clouddn.com/pop3%E8%AE%BE%E7%BD%AE.png" alt="邮箱功能"></p>
+<p>浏览器密码：注册时的密码；<br>客户端密码：邮箱给发的短信密码</p>
+<p>打开 <code>帮助中心</code><br><img src="http://7xodej.com1.z0.glb.clouddn.com/%E7%AB%AF%E5%8F%A3.png" alt="端口"></p>
+<p><strong> 更改cacti设置</strong>；<br>更改邮件地址<br>测试邮件设置<br><img src="http://7xodej.com1.z0.glb.clouddn.com/cacti%E9%82%AE%E7%AE%B1%E8%AE%BE%E7%BD%AE.png" alt=""></p>
+<p>打开设置–&gt;阈值/报警，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">将基本url改成cacti的ip地址，当发送邮件时，会把问题主机的ip地址一同发送。</div><div class="line">更改主机宕机通知邮件</div><div class="line">更改发件人地址</div></pre></td></tr></table></figure></p>
+<p>添加：<code>阈值模板</code>,<br>根据需求更改</p>
+<h2 id="更改cacti采集数据延迟"><a href="#更改cacti采集数据延迟" class="headerlink" title="更改cacti采集数据延迟"></a>更改cacti采集数据延迟</h2><p>采集器 最小选1分钟，cron选1分钟因为cron最小单位是1min<br>备份数据 备份rra</p>
+<p>数据源 选 数据模板 更改进程 ，300—》60 （5分钟改成1分钟。）</p>
+<h2 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h2>
+	
+	
+	
+	
+</div>
+				
+				
+
+                <!-- Post Comments -->
+                
+
+
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2016/09/08/运维第七课raid,lvm分区/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+        </div>
+    </div>
+
+				
+				
+					<!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay "></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored  sidebar-fixed-left" role="navigation">
+	<div id="sidebar-main">
+	    <!-- Sidebar Header -->
+		<div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+    <i class="material-icons">clear_all</i>
+    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="袁帅's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        youremail@email.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+		<!-- Sidebar Navigation  -->
+		<ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+			
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+						<i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    <li id="sidebar-first-li">
+        <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+             主页
+        </a>
+    </li>
+
+    <!-- I'm Feeling Lucky -->
+<!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+-->
+
+	
+    <!-- Archives  -->
+    <li class="dropdown">
+        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             归档
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+            <a class="sidebar_archives-link" href="/archives/2016/09/">九月 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">八月 2016<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/04/">四月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/12/">十二月 2015<span class="sidebar_archives-count">1</span></a>
+        </ul>
+    </li>
+
+    <!-- Divider -->
+    <li class="divider"></li>
+
+
+    <!-- Pages  -->
+	
+
+    <!-- Article Numebr  -->
+    <li>
+        <a href="/archives">
+             文章总数
+             <span class="sidebar-badge">9</span>
+        </a>
+    </li>
+</ul>
+
+		<!-- Sidebar Divider -->
+		<div class="sidebar-divider"></div>
+
+		<!-- Sidebar Footer -->
+		<!-- 
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持。 :) 
+-->
+
+<!-- Theme Material -->
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+	<div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		主题 - Material
+		<span class="sidebar-badge badge-circle">i</span>
+	</div>
+</a>
+
+<!-- Help & Support -->
+<!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		sidebar.help
+		<span class="mdl-button__ripple-container">
+			<span class="mdl-ripple"></span>
+		</span>
+	</div>
+</a>
+-->
+
+<!-- Feedback -->
+<!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+<!-- Abount Theme -->
+<!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+
+	</div>
+    
+    <!-- Sidebar Sponsor -->
+    
+
+
+</aside>
+
+				
+				
+				
+					<!-- Footer Top Button -->
+					<div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+				
+				
+				<!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+	
+	
+		<!-- Paradox Footer Left Section -->
+		<div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+    <a href="https://twitter.com/twitter" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.png);">
+        <span class="visuallyhidden">Twitter</span>
+    </button></a>
+    
+    
+    <!-- Facebook -->
+    
+    <a href="https://www.facebook.com/facebook" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.png);">
+        <span class="visuallyhidden">Facebook</span>
+    </button></a>
+    
+    
+    <!-- Google + -->
+    
+    <a href="https://www.google.com/" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
+        <span class="visuallyhidden">Google Plus</span>
+    </button></a>
+    
+    
+    <!-- Weibo -->
+    
+    
+    
+    <!-- Instagram -->
+    
+    
+    
+    <!-- Tumblr -->
+    
+    
+    
+    <!-- Github -->
+    
+    
+</div>
+
+
+		<!--Copyright-->
+		<div id="copyright">Copyright&nbsp;©&nbsp;<script type="text/javascript">var fd = new Date();document.write(fd.getFullYear());</script>&nbsp;前端，python和运维</div>
+
+		<!-- Paradox Footer Right Section -->
+
+		<!-- 
+		I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+		It will not impact the appearance and can give developers a lot of support :)
+
+		很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+		它不会影响美观并可以给开发者很大的支持。 :) 
+		-->
+
+		<div class="mdl-mini-footer--right-section">
+			<div>
+				<div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+				<div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+			</div>
+		</div>
+	
+    
+</footer>
+                
+				<!-- Import File -->
+<script src="/js/highlight.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+    
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $(".post-toc-wrap").parent(".mdl-menu__container").css("position", "fixed");
+    });
+</script>
+
+<!-- MathJax Load-->
+
+            </main>
+        </div>
+		
+    </body>
+		
+	
+</html>

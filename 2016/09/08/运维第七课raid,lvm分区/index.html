@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!-- Title -->
+    
+    <title>
+        linux磁盘 | 前端，python和运维
+    </title>
+    
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+    
+    <!-- Meta & INfo -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="袁帅">
+    <meta name="description" content="null">
+    <meta name="keywords" content="null">
+    
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+    
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="前端，python和运维">
+    
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yshuai.github.io">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="linux磁盘 | 前端，python和运维">
+    <meta property="og:description" content="null">
+    
+     <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+        
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+    
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+	body, html{
+		font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+	}
+	
+    a{
+        color: #00838F
+    }
+    
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge{
+        background-color: #0097A7 !important
+    }
+    
+	/* Sidebar User Drop Down Menu Text Color */
+	#scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus{
+        color: #0097A7 !important
+    }
+    
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover > a,
+    .sidebar-colored .sidebar-nav li:hover > a i,
+    .sidebar-colored .sidebar-nav li > a:hover,
+    .sidebar-colored .sidebar-nav li > a:hover i,
+    .sidebar-colored .sidebar-nav li > a:focus i,
+    .sidebar-colored .sidebar-nav > .open > a,
+    .sidebar-colored .sidebar-nav > .open > a:hover,
+    .sidebar-colored .sidebar-nav > .open > a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a{
+        color: #0097A7 !important
+    }
+    
+    .toTop{
+        background: #757575 !important
+    }
+		
+	.material-layout .material-post>.material-nav,
+	.material-layout .material-index>.material-nav,
+	.material-nav a{
+		color: #757575;
+	}
+		
+	#scheme-Paradox .MD-burger-layer {
+		background-color: #757575;
+	}
+
+	#scheme-Paradox #post-toc-trigger-btn{
+		color: #757575;
+	}
+	
+	.post-toc a:hover{
+		color: #00838F;
+		text-decoration: underline;
+	}
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+        body{
+            background-color: #F5F5F5
+        }
+		
+		/* blog_info bottom background */
+        #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+            background-color: #fff;
+        }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+        .fade {
+            transition: all 800ms linear;
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            opacity: 1;
+        }
+
+        .fade.out{
+            opacity: 0;
+        }
+    </style>
+
+	<script src="/js/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="/css/highlight/solarized-white.css">
+	
+	<!-- UC Browser Compatible-->
+	<script>
+		var agent = navigator.userAgent.toLowerCase();
+		if(agent.indexOf('ucbrowser')>0) {
+			document.write('<link rel="stylesheet" href="/css/uc.css">');
+		   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+		}
+	</script>
+    
+    <!-- Custom Head -->
+    
+</head>
+	
+	
+
+    <body id="scheme-Paradox">
+
+		
+        <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+				
+			
+			
+            <!-- Main Container -->
+            <main class="material-layout__content" id="main">
+				
+                <!-- Top Anchor -->
+                <div id="top"></div>
+				
+				
+                <!-- Hamburger Button -->
+                <button class="MD-burger-icon sidebar-toggle">
+                    <span class="MD-burger-layer"></span>
+                </button>
+				
+				
+                
+	<!-- Back Button -->
+<!--
+	<div class="material-back" id="backhome-div" tabindex="0">
+		<a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="#" onclick="window.history.back();return false;" target="_self" role="button" data-upgraded=",MaterialButton,MaterialRipple">
+			<i class="material-icons" role="presentation">arrow_back</i>
+			<span class="mdl-button__ripple-container">
+				<span class="mdl-ripple"></span>
+			</span>
+		</a>
+	</div>			
+-->
+	<!-- Left aligned menu below button -->
+	<button id="post-toc-trigger-btn"
+			class="mdl-button mdl-js-button mdl-button--icon">
+	  <i class="material-icons">format_list_numbered</i>
+	</button>
+
+	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+		for="post-toc-trigger-btn">
+			
+			<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#磁盘"><span class="post-toc-number">1.</span> <span class="post-toc-text">磁盘</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#raid-数据容错-优化读写"><span class="post-toc-number">2.</span> <span class="post-toc-text">raid   数据容错     优化读写</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何实现-两种方法"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">如何实现    两种方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#raid-分类及特点"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">raid   分类及特点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何制作软raid"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">如何制作软raid</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-明确指出谁坏了"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">1. 明确指出谁坏了</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-拔盘之前要先把该盘-从磁盘阵列中移除-再物理拔盘"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">2.拔盘之前要先把该盘  从磁盘阵列中移除   再物理拔盘</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-插上新盘"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">3 插上新盘</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-将新盘加入到raid"><span class="post-toc-number">2.3.4.</span> <span class="post-toc-text">4 将新盘加入到raid</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#作业"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">作业:</span></a></li></ol></li></ol>
+		
+<!--			<li class="mdl-menu__item">Some Action</li>-->
+	</ul>
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+		
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+	<!-- Paradox Post Header -->
+	
+		
+			<!-- Random Thumbnail -->
+			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+				<script>
+    
+    var randomNum;
+    randomNum = Math.floor(Math.random() * 5 + 1);
+    
+    $(".post_thumbnail-random").css('background-image', 'url(' + '/img/random/' + randomNum + '.png' + ')');
+    
+</script>
+
+		
+	
+        <p class="article-headline-p">
+            linux磁盘
+        </p>
+    </div>
+
+	
+
+				
+				
+					<!-- Paradox Post Info -->
+					<div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+    
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>袁帅</strong>
+        <span>9月 08, 2016</span>
+    </div>
+    
+    <div class="section-spacer"></div>
+	
+    <!-- Favorite -->
+<!--
+    <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+        <i class="material-icons" role="presentation">favorite</i>
+        <span class="visuallyhidden">favorites</span>
+    </button>
+-->
+    
+    <!-- Tags (bookmark) -->
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/linux-运维/">linux 运维</a>
+    </ul>
+    
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    
+    
+    
+    
+    <!-- Share Twitter -->
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=linux磁盘&url=http://yshuai.github.io//2016/09/08/运维第七课raid,lvm分区/index.html&via=袁帅" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Twitter
+        </li>
+    </a>
+    
+    <!-- Share Google+ -->
+    <a class="post_share-link" href="https://plus.google.com/share?url=http://yshuai.github.io//2016/09/08/运维第七课raid,lvm分区/index.html" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Google+
+        </li>
+    </a>
+    
+    <!-- Share Weibo -->
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=linux磁盘&url=http://yshuai.github.io//2016/09/08/运维第七课raid,lvm分区/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <li class="mdl-menu__item">
+            分享到微博
+        </li>
+    </a>
+</ul>
+</div>
+				
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+	
+		<h2 id="磁盘"><a href="#磁盘" class="headerlink" title="磁盘"></a>磁盘</h2><ol>
+<li><p>硬盘坏了   数据怎么办</p>
+</li>
+<li><p>硬盘速度慢   怎么优化</p>
+</li>
+<li><p>硬盘空间有限   怎么办</p>
+</li>
+</ol>
+<p>解决1. 2的问题    可以使用磁盘阵列  raid<br>解决 3 的问题  可以使用逻辑卷  LVM</p>
+<h2 id="raid-数据容错-优化读写"><a href="#raid-数据容错-优化读写" class="headerlink" title="raid   数据容错     优化读写"></a>raid   数据容错     优化读写</h2><p>就是将多个物理磁盘  组合成一个逻辑的磁盘</p>
+<h3 id="如何实现-两种方法"><a href="#如何实现-两种方法" class="headerlink" title="如何实现    两种方法"></a>如何实现    两种方法</h3><p>方法一  硬件raid  需要硬件支持    服务器都支持 需要raid卡    现在服务器都集成<br>    开机根据提示进入raid设置菜单  设置就可以   ctrl+i</p>
+<p>方法二  软件raid  不需要硬件支持就可以实现 </p>
+<h3 id="raid-分类及特点"><a href="#raid-分类及特点" class="headerlink" title="raid   分类及特点"></a>raid   分类及特点</h3><ol>
+<li>raid 0     只优化速度 不容错    读写速度最快   但是不容错     需要两块及以上磁盘组成    建议不超过3块<br>  数据会平均分割后存在每个物理磁盘     当一块硬盘错误  那么数据全部丢失<br>  适用于不需要数据安全的环境    缓存服务器   点播服务器 </li>
+</ol>
+<ol>
+<li>raid 1  镜像卷     只容错    磁盘空间利用率低   1比1的备份    要求磁盘必须有偶数个 最小是2块    空间一样大<br>   特点是一份数据写两次【每个磁盘写一次】  缺点磁盘空间利用率低    只能用1/2的空间<br>   适用于对数据安全较高的地方     银行    金融    保险     数据库服务器</li>
+</ol>
+<ol>
+<li>raid 5   容错也优化速度    磁盘容量{(n-1)*磁盘数量                 读的速度和raid0 一样快   写的速度比raid0 慢  因为要写校验   磁盘利用率(n-1) 块磁盘空间    最少3块磁盘  建议4块<pre><code>适用用于任何环境
+</code></pre></li>
+</ol>
+<ol>
+<li>复合raid  raid+raid  = raid</li>
+</ol>
+<p>raid 10  raid1 + raid1 =raid0<br>raid 50  </p>
+<h3 id="如何制作软raid"><a href="#如何制作软raid" class="headerlink" title="如何制作软raid"></a>如何制作软raid</h3><ol>
+<li>给磁盘分区   并且转换分区id 83—&gt;fd(这步可省略)</li>
+<li>制作   mdadm命令 <code>mdadm -C /dev/md/mydata -l 5  -n 4 /dev/sd{b..e}1</code></li>
+</ol>
+<p>–create  建立raid<br>–level  raid类型  0,1,5,10等等<br>  -n  指定raid数量  及 设备盘<br>  -x  备用盘，n+x等于制作raid的磁盘数</p>
+<ol>
+<li>写配置文件   下次重启后直接读配置文件  就会自动加载raid信息了 </li>
+</ol>
+<p>配置文件  <code>/etc/mdadm.conf</code><br>echo “DEVICE /dev/sdb1 /dev/sdc1 /dev/sdd1 /dev/sde1” &gt;&gt; /etc/mdadm.conf<br> mdadm -Ds &gt;&gt; /etc/mdadm.conf<br>4） 分区  格式化 挂载</p>
+<p>查看raid分区状态 cat /proc/mdstat U表示正在繁忙(几个U就代表几个磁盘在工作),F代表故障<br>mdadm -D /dev/md（raid的父级目录，rh下有可能是md127）-D:–detail</p>
+<p>5）模拟故障    如何从raid中更换磁盘</p>
+<h4 id="1-明确指出谁坏了"><a href="#1-明确指出谁坏了" class="headerlink" title="1. 明确指出谁坏了"></a>1. 明确指出谁坏了</h4><p><code>[root@BJ_CNC_0_116 disk1]# mdadm -f /dev/md/mydata /dev/sde1</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mdadm: set /dev/sde1 faulty in /dev/md/mydata</div><div class="line">[root@BJ_CNC_0_116 disk1]# cat /proc/mdstat </div><div class="line">Personalities : [raid6] [raid5] [raid4] </div><div class="line">md127 : active raid5 sdc1[1] sde1[4](F) sdd1[2] sdb1[0]</div><div class="line">      15707136 blocks super 1.2 level 5, 512k chunk, algorithm 2 [4/3] [UUU_]</div><div class="line">      </div><div class="line">unused devices: &lt;none&gt;</div></pre></td></tr></table></figure>
+<h4 id="2-拔盘之前要先把该盘-从磁盘阵列中移除-再物理拔盘"><a href="#2-拔盘之前要先把该盘-从磁盘阵列中移除-再物理拔盘" class="headerlink" title="2.拔盘之前要先把该盘  从磁盘阵列中移除   再物理拔盘"></a>2.拔盘之前要先把该盘  从磁盘阵列中移除   再物理拔盘</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">[root@BJ_CNC_0_116 disk1]# mdadm -r /dev/md/mydata /dev/sde1</div><div class="line">mdadm: hot removed /dev/sde1 from /dev/md/mydata</div><div class="line">[root@BJ_CNC_0_116 disk1]# </div><div class="line">[root@BJ_CNC_0_116 disk1]# cat /proc/mdstat </div><div class="line">Personalities : [raid6] [raid5] [raid4] </div><div class="line">md127 : active raid5 sdc1[1] sdd1[2] sdb1[0]</div><div class="line">      15707136 blocks super 1.2 level 5, 512k chunk, algorithm 2 [4/3] [UUU_]</div><div class="line">      </div><div class="line">unused devices: &lt;none&gt;</div></pre></td></tr></table></figure>
+<h4 id="3-插上新盘"><a href="#3-插上新盘" class="headerlink" title="3 插上新盘"></a>3 插上新盘</h4><h4 id="4-将新盘加入到raid"><a href="#4-将新盘加入到raid" class="headerlink" title="4 将新盘加入到raid"></a>4 将新盘加入到raid</h4><p><code>[root@BJ_CNC_0_116 disk1]# mdadm /dev/md/mydata -a /dev/sdf1</code><br>mdadm: added /dev/sdf1</p>
+<p>####5 校验数据</p>
+<p>[root@BJ_CNC_0<em>116 disk1]# cat /proc/mdstat<br>Personalities : [raid6] [raid5] [raid4]<br>md127 : active raid5 sdf1[4] sdc1[1] sdd1[2] sdb1[0]<br>      15707136 blocks super 1.2 level 5, 512k chunk, algorithm 2 [4/3] [UUU</em>]<br>      [&gt;………………..]  recovery =  4.3% (229888/5235712) finish=4.3min speed=19157K/sec</p>
+<p>unused devices: <none></none></p>
+<p>#####删除raid<br>1）卸载<br>2）从阵列中将磁盘移除<br>mdadm /dev/md/mydata -f /dev/sd[b,c,d,f]1 -r /dev/sd[b,c,d,f]1<br>  -f  定义失败盘  -r 移除<br>3）停止阵列  删除配置文件<br> mdadm -S /dev/md/mydata<br>  -S  stop<br> rm -rf /etc/mdadm.conf</p>
+<p>###LVM<br>一、建立PV [physical volume]<br>     1）磁盘分区     一个分区就是将来就是一个PV<br>     2）将分区转换为  PV<br>           pvcreate /dev/sdb1 /dev/sdd1  /dev/sdc1  …<br>     3) 查看是否创建好了PV<br>               pvs</p>
+<p>二、创建VG<br>[root@BJ_CNC_0_116 ~]# vgcreate vfast100 /dev/sdb1 /dev/sdc1 /dev/sdd1<br>  Volume group “vfast100” successfully created</p>
+<p>vfast100  卷组名字  随便起</p>
+<p>[root@BJ_CNC_0_116 ~]# vgs<br>  VG       #PV #LV #SN Attr   VSize  VFree<br>  vfast100   3   0   0 wz–n- 14.98g 14.98g</p>
+<p>往卷组中添加一个盘<br>[root@BJ_CNC_0_116 ~]# vgextend vfast100 /dev/sdf1<br>  Volume group “vfast100” successfully extended<br>[root@BJ_CNC_0_116 ~]#<br>[root@BJ_CNC_0_116 ~]# vgs<br>  VG       #PV #LV #SN Attr   VSize  VFree<br>  vfast100   4   0   0 wz–n- 19.97g 19.97g</p>
+<p>三、创建LV<br>[root@BJ_CNC_0_116 ~]# lvcreate -n lv1 -L 6G /dev/vfast100<br>  Logical volume “lv1” created<br>[root@BJ_CNC_0_116 ~]# lvs<br>  LV   VG       Attr     LSize Pool Origin Data%  Move Log Copy%  Convert<br>  lv1  vfast100 -wi-a— 6.00g  </p>
+<p>四 挂载<br>格式化  挂载<br>【root@BJ_CNC_0_116 ~]# mkfs.ext3 /dev/vfast100/lv1 </p>
+<p>五、LV 变化<br>扩大<br>[root@BJ_CNC_0_116 ~]# lvextend -L 11G /dev/vfast100/lv2<br>  Extending logical volume lv2 to 11.00 GiB<br>  Logical volume lv2 successfully resized</p>
+<p>扩大LV2分区</p>
+<p>[root@BJ_CNC_0_116 ~]# resize2fs /dev/vfast100/lv2<br>resize2fs 1.41.12 (17-May-2010)<br>Filesystem at /dev/vfast100/lv2 is mounted on /opt/disk2; on-line resizing required<br>old desc_blocks = 1, new_desc_blocks = 1<br>Performing an on-line resize of /dev/vfast100/lv2 to 2883584 (4k) blocks.<br>The filesystem on /dev/vfast100/lv2 is now 2883584 blocks long.</p>
+<p>扩大文件系统中显示的大小</p>
+<p>缩小<br>1）需要缩小的空间  系统是否有  确定自由空间是否有<br>2) 卸载分区 </p>
+<p>3）扫描该分区<br>[root@BJ_CNC_0_116 ~]# e2fsck -f /dev/vfast100/lv2<br>e2fsck 1.41.12 (17-May-2010)<br>第一步: 检查inode,块,和大小<br>第二步: 检查目录结构<br>第3步: 检查目录连接性<br>Pass 4: Checking reference counts<br>第5步: 检查簇概要信息<br>/dev/vfast100/lv2: 11/720896 files (0.0% non-contiguous), 63569/2883584 blocks</p>
+<p>4）缩小 文件系统中的大小   缩小剩下多少<br>[root@BJ_CNC_0_116 ~]# resize2fs /dev/vfast100/lv2 6G<br>resize2fs 1.41.12 (17-May-2010)<br>Resizing the filesystem on /dev/vfast100/lv2 to 1310720 (4k) blocks.<br>The filesystem on /dev/vfast100/lv2 is now 1310720 blocks long.</p>
+<p>5）缩分区<br>[root@BJ_CNC_0_116 ~]# lvreduce -L 6G /dev/vfast100/lv2<br>  WARNING: Reducing active logical volume to 6.00 GiB<br>  THIS MAY DESTROY YOUR DATA (filesystem etc.)<br>Do you really want to reduce lv2? [y/n]: y<br>  Reducing logical volume lv2 to 6.00 GiB<br>  Logical volume lv2 successfully resized</p>
+<p>6） 挂载继续使用</p>
+<h3 id="作业"><a href="#作业" class="headerlink" title="作业:"></a>作业:</h3><p>在虚拟机插入sdb  sdc  sdd  sde  sdf 五块盘</p>
+<p>其中sd{b..f}1  做raid5    格式化为ext4分区  开机自动 挂载到 /opt/disk1</p>
+<p>sd{b..f}2  做lvm   vg_name:vg100<br>   新建lv1   2G  lv2 3g<br>   格式化为ext4分区<br>开机自动 挂载到 /opt/disk2<br>开机自动 挂载到 /opt/disk3</p>
+<p>扩大lv1 到3G   缩小lv2 到2G</p>
+<p>直接raid10<br>raid10+lvm<br>先做raid1，再做raid0；<br>两个做一个raidi1；<br>将raid1合成raid0；<br>然后再在raid0的基础上做lvm；保证数据安全的同时还能扩容分区；</p>
+<p>###面试考题<br>1、做没做过raid   做过那些     特点是什么<br>2.IO是怎么优化的 </p>
+<p>Ds 最好用Es，Ds有时没法写入/etc/mdadm.conf<br>Es 扫描硬盘存在的raid配置；</p>
+
+	
+	
+	
+	
+</div>
+				
+				
+
+                <!-- Post Comments -->
+                
+
+
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    
+    <!-- Prev Nav -->
+    
+        <a href="/2016/09/30/运维第13课cacti/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2016/09/08/运维第三课/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+        </div>
+    </div>
+
+				
+				
+					<!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay "></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored  sidebar-fixed-left" role="navigation">
+	<div id="sidebar-main">
+	    <!-- Sidebar Header -->
+		<div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+    <i class="material-icons">clear_all</i>
+    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="袁帅's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        youremail@email.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+		<!-- Sidebar Navigation  -->
+		<ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+			
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+						<i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    <li id="sidebar-first-li">
+        <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+             主页
+        </a>
+    </li>
+
+    <!-- I'm Feeling Lucky -->
+<!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+-->
+
+	
+    <!-- Archives  -->
+    <li class="dropdown">
+        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             归档
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+            <a class="sidebar_archives-link" href="/archives/2016/09/">九月 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">八月 2016<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/04/">四月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/12/">十二月 2015<span class="sidebar_archives-count">1</span></a>
+        </ul>
+    </li>
+
+    <!-- Divider -->
+    <li class="divider"></li>
+
+
+    <!-- Pages  -->
+	
+
+    <!-- Article Numebr  -->
+    <li>
+        <a href="/archives">
+             文章总数
+             <span class="sidebar-badge">9</span>
+        </a>
+    </li>
+</ul>
+
+		<!-- Sidebar Divider -->
+		<div class="sidebar-divider"></div>
+
+		<!-- Sidebar Footer -->
+		<!-- 
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持。 :) 
+-->
+
+<!-- Theme Material -->
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+	<div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		主题 - Material
+		<span class="sidebar-badge badge-circle">i</span>
+	</div>
+</a>
+
+<!-- Help & Support -->
+<!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		sidebar.help
+		<span class="mdl-button__ripple-container">
+			<span class="mdl-ripple"></span>
+		</span>
+	</div>
+</a>
+-->
+
+<!-- Feedback -->
+<!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+<!-- Abount Theme -->
+<!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+
+	</div>
+    
+    <!-- Sidebar Sponsor -->
+    
+
+
+</aside>
+
+				
+				
+				
+					<!-- Footer Top Button -->
+					<div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+				
+				
+				<!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+	
+	
+		<!-- Paradox Footer Left Section -->
+		<div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+    <a href="https://twitter.com/twitter" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.png);">
+        <span class="visuallyhidden">Twitter</span>
+    </button></a>
+    
+    
+    <!-- Facebook -->
+    
+    <a href="https://www.facebook.com/facebook" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.png);">
+        <span class="visuallyhidden">Facebook</span>
+    </button></a>
+    
+    
+    <!-- Google + -->
+    
+    <a href="https://www.google.com/" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
+        <span class="visuallyhidden">Google Plus</span>
+    </button></a>
+    
+    
+    <!-- Weibo -->
+    
+    
+    
+    <!-- Instagram -->
+    
+    
+    
+    <!-- Tumblr -->
+    
+    
+    
+    <!-- Github -->
+    
+    
+</div>
+
+
+		<!--Copyright-->
+		<div id="copyright">Copyright&nbsp;©&nbsp;<script type="text/javascript">var fd = new Date();document.write(fd.getFullYear());</script>&nbsp;前端，python和运维</div>
+
+		<!-- Paradox Footer Right Section -->
+
+		<!-- 
+		I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+		It will not impact the appearance and can give developers a lot of support :)
+
+		很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+		它不会影响美观并可以给开发者很大的支持。 :) 
+		-->
+
+		<div class="mdl-mini-footer--right-section">
+			<div>
+				<div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+				<div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+			</div>
+		</div>
+	
+    
+</footer>
+                
+				<!-- Import File -->
+<script src="/js/highlight.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+    
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $(".post-toc-wrap").parent(".mdl-menu__container").css("position", "fixed");
+    });
+</script>
+
+<!-- MathJax Load-->
+
+            </main>
+        </div>
+		
+    </body>
+		
+	
+</html>
